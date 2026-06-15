@@ -1,0 +1,1047 @@
+[
+  {
+    "id": "PD-001",
+    "title": "Brak obrazu po włączeniu komputera",
+    "client": "Anna Nowak",
+    "difficulty": "latwy",
+    "risk": "niskie",
+    "initialHealth": 86,
+    "mail": "Dzień dobry,\npo włączeniu komputera monitor jest czarny. Wentylatory działają, a komputer wydaje jeden krótki sygnał BIOS. Sprawdzałam kabel monitora na laptopie i działa. Wczoraj komputer był przenoszony, a obudowa jest dość ciężka.\nPozdrawiam,\nAnna",
+    "symptoms": [
+      "Czarny ekran, ale wentylatory pracują",
+      "Pojedynczy krótki sygnał BIOS zwykle oznacza poprawne przejście POST",
+      "Komputer był niedawno przenoszony",
+      "Obudowa jest ciężka (duża karta graficzna)"
+    ],
+    "diagnosisOptions": [
+      "Pamięć RAM",
+      "Karta graficzna",
+      "Dysk SSD",
+      "Zasilacz"
+    ],
+    "correctAnswer": "Karta graficzna",
+    "diagnosisExplanation": "Pojedynczy krótki sygnał BIOS zwykle oznacza, że POST zakończył się poprawnie, więc problem nie musi dotyczyć RAM. W połączeniu z faktem przenoszenia ciężkiej obudowy najbardziej prawdopodobne jest poluzowanie się ciężkiej karty graficznej w slocie PCI-E albo niedokładnie wpięte zasilanie GPU.",
+    "repairSteps": [
+      {
+        "label": "Odłącz zasilanie i dociśnij kartę graficzną w slocie PCI-E",
+        "progress": 40,
+        "healthBoost": 5,
+        "explanation": "Ciężkie karty często luzują się podczas transportu."
+      },
+      {
+        "label": "Sprawdź i ponownie podłącz przewody zasilające PCIe karty",
+        "progress": 30,
+        "healthBoost": 4,
+        "explanation": "Niedokładnie wpięte zasilanie GPU powoduje brak obrazu."
+      },
+      {
+        "label": "Przetestuj komputer, podłączając monitor bezpośrednio do płyty głównej (jeśli CPU ma iGPU)",
+        "progress": 30,
+        "healthBoost": 3,
+        "explanation": "Izoluje problem, potwierdzając, że to GPU, a nie reszta zestawu."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Wymień pamięć RAM bez testów",
+      "Zainstaluj ponownie system operacyjny",
+      "Wymień pastę termoprzewodzącą procesora"
+    ],
+    "points": 120
+  },
+  {
+    "id": "PD-004",
+    "title": "Komputer piszczy i nie uruchamia systemu",
+    "client": "Paweł Domański",
+    "difficulty": "latwy",
+    "risk": "niskie",
+    "initialHealth": 82,
+    "mail": "Cześć,\npo dołożeniu drugiej kości pamięci komputer zaczął piszczeć i nie pokazuje pulpitu. Co ciekawe, czasem udaje mu się wystartować, jeśli mocno docisnę górną część obudowy przy przycisku zasilania. Wyjąłem nową kość, ale problem czasem wraca.\nPaweł",
+    "symptoms": [
+      "Sygnały dźwiękowe przy starcie",
+      "Problem pojawił się po ingerencji w RAM",
+      "Reakcja na docisk obudowy (sugeruje problem mechaniczny)",
+      "Niestabilny start nawet po wyjęciu nowej kości"
+    ],
+    "diagnosisOptions": [
+      "Pamięć RAM",
+      "Płyta główna",
+      "Zasilacz",
+      "Dysk HDD"
+    ],
+    "correctAnswer": "Pamięć RAM",
+    "diagnosisExplanation": "Problem pojawił się bezpośrednio po dołożeniu drugiej kości RAM, więc najbardziej prawdopodobne są: niedokładnie wpięty moduł, zabrudzony slot albo niekompatybilność pamięci. Reakcja na docisk obudowy sugeruje problem mechaniczny, ale w pierwszej kolejności należy diagnozować RAM i sloty RAM, a nie od razu wymieniać płytę główną.",
+    "repairSteps": [
+      {
+        "label": "Odłącz zasilanie i ponownie poprawnie osadź wszystkie kości RAM",
+        "progress": 30,
+        "healthBoost": 4,
+        "explanation": "Niedokładnie wpięta kość RAM bardzo często powoduje piszczenie i brak startu."
+      },
+      {
+        "label": "Przetestuj każdą kość RAM osobno w różnych slotach",
+        "progress": 35,
+        "healthBoost": 5,
+        "explanation": "Pozwala odróżnić uszkodzoną kość od problemu z konkretnym slotem."
+      },
+      {
+        "label": "Wyczyść sloty RAM i sprawdź zgodność modułów pamięci",
+        "progress": 20,
+        "healthBoost": 3,
+        "explanation": "Kurz, zabrudzenia lub mieszanie niekompatybilnych modułów mogą powodować niestabilny start."
+      },
+      {
+        "label": "Jeśli problem występuje tylko w jednym slocie, podejrzewaj uszkodzenie płyty głównej",
+        "progress": 15,
+        "healthBoost": 3,
+        "explanation": "Płyta główna jest możliwa, ale dopiero po wykluczeniu RAM i slotów."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Sformatuj partycję systemową",
+      "Wymień monitor na większy",
+      "Zwiększ napięcie procesora w BIOS"
+    ],
+    "points": 130
+  },
+  {
+    "id": "PD-007",
+    "title": "Bardzo głośna praca i wysoka temperatura",
+    "client": "Ewa Mazur",
+    "difficulty": "latwy",
+    "risk": "średnie",
+    "initialHealth": 74,
+    "mail": "Dzień dobry,\nkomputer ostatnio brzmi jak odkurzacz. Po kilku minutach lekcji online wszystko zaczyna się przycinać, a obudowa jest bardzo ciepła. Nigdy go nie czyściłam. Co dziwne, program diagnostyczny pokazuje, że dysk SSD ma 99% zdrowia, ale system i tak muli.\nEwa",
+    "symptoms": [
+      "Głośne wentylatory pracujące na 100%",
+      "Spadki wydajności (throttling) po kilku minutach",
+      "Widoczne nagromadzenie kurzu",
+      "Dysk SSD jest sprawny (wyklucza go jako przyczynę spowolnień)"
+    ],
+    "diagnosisOptions": [
+      "Układ chłodzenia",
+      "Dysk SSD",
+      "Zasilacz",
+      "Pamięć RAM"
+    ],
+    "correctAnswer": "Układ chłodzenia",
+    "diagnosisExplanation": "Kurz i wysokie temperatury wskazują na problem z chłodzeniem. Throttling procesora powoduje spowolnienia, które użytkownik może mylnie brać za awarię dysku lub RAM.",
+    "repairSteps": [
+      {
+        "label": "Oczyść radiatory i wentylatory sprężonym powietrzem",
+        "progress": 40,
+        "healthBoost": 7,
+        "explanation": "Usunięcie kurzu przywraca przepływ powietrza."
+      },
+      {
+        "label": "Sprawdź, czy wszystkie wentylatory (CPU, GPU, obudowa) się obracają",
+        "progress": 30,
+        "healthBoost": 4,
+        "explanation": "Zatrzymany wentylator może szybko doprowadzić do przegrzania."
+      },
+      {
+        "label": "Wykonaj test temperatur (np. Cinebench) po czyszczeniu",
+        "progress": 30,
+        "healthBoost": 4,
+        "explanation": "Test potwierdza, że throttling ustąpił."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Wymień dysk SSD na nowy",
+      "Wyłącz zabezpieczenia termiczne w BIOS",
+      "Zwiększ napięcie procesora"
+    ],
+    "points": 135
+  },
+  {
+    "id": "PD-002",
+    "title": "Losowe restarty podczas grania",
+    "client": "Michał Zieliński",
+    "difficulty": "sredni",
+    "risk": "średnie",
+    "initialHealth": 72,
+    "mail": "Dzień dobry,\nkomputer działa dobrze w internecie, ale w grach po kilku minutach nagle się wyłącza i startuje od nowa. Nie ma niebieskiego ekranu. Temperatura procesora w grze dochodzi do 85°C, ale problem nasilił się dopiero po wymianie karty graficznej na mocniejszą (RTX 4070). Zasilacz ma 650W.\nMichał",
+    "symptoms": [
+      "Nagły restart pod dużym obciążeniem graficznym",
+      "Brak niebieskiego ekranu (BSOD)",
+      "Temperatura CPU wysoka, ale w granicach normy",
+      "Problem pojawił się po upgrade'ie GPU",
+      "Zasilacz 650W przy mocnej karcie"
+    ],
+    "diagnosisOptions": [
+      "Zasilacz",
+      "Układ chłodzenia",
+      "Płyta główna",
+      "Pamięć RAM"
+    ],
+    "correctAnswer": "Zasilacz",
+    "diagnosisExplanation": "Nagłe restarty bez błędu systemu pod obciążeniem, zwłaszcza po dołożeniu mocniejszego GPU do słabego zasilacza, to klasyczny objaw zadziałania zabezpieczeń OCP/OPP zasilacza.",
+    "repairSteps": [
+      {
+        "label": "Sprawdź specyfikację zasilacza i porównaj z zalecanym poborem mocy GPU",
+        "progress": 30,
+        "healthBoost": 3,
+        "explanation": "650W może być na granicy dla mocnego GPU i CPU."
+      },
+      {
+        "label": "Skontroluj przewody zasilające kartę graficzną (czy są to dwa osobne kable z PSU)",
+        "progress": 25,
+        "healthBoost": 4,
+        "explanation": "Używanie jednego kabla z rozdwojeniem (pigtail) może powodować spadki napięcia."
+      },
+      {
+        "label": "Przeprowadź test obciążeniowy (OCCT) z monitoringiem napięć",
+        "progress": 25,
+        "healthBoost": 3,
+        "explanation": "Monitorowanie spadków napięcia na linii 12V pod obciążeniem."
+      },
+      {
+        "label": "Wymień zasilacz na model o wyższej mocy (np. 750W+)",
+        "progress": 20,
+        "healthBoost": 5,
+        "explanation": "Rozwiązanie problemu niewystarczającej mocy."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Wymień pastę termoprzewodzącą procesora",
+      "Sformatuj dysk twardy",
+      "Zmień tapetę pulpitu"
+    ],
+    "points": 180
+  },
+  {
+    "id": "PD-005",
+    "title": "System uruchamia się bardzo długo",
+    "client": "Natalia Król",
+    "difficulty": "sredni",
+    "risk": "średnie",
+    "initialHealth": 76,
+    "mail": "Dzień dobry,\nkomputer włącza się kilka minut, a czasem po zalogowaniu wszystko zamiera na kilkanaście sekund. Słychać delikatne cykanie z obudowy. Czasem system widzi tylko jeden z dwóch podłączonych dysków. Mam na nim zdjęcia rodzinne, więc proszę niczego nie kasować.\nNatalia",
+    "symptoms": [
+      "Bardzo długi start systemu i zawieszanie",
+      "Słyszalne cykanie z obudowy",
+      "Czasowe znikanie drugiego dysku z systemu",
+      "Krytyczne dane użytkownika na dysku"
+    ],
+    "diagnosisOptions": [
+      "Dysk HDD",
+      "Płyta główna",
+      "Zasilacz",
+      "Pamięć RAM"
+    ],
+    "correctAnswer": "Dysk HDD",
+    "diagnosisExplanation": "Cykanie to mechaniczny objaw awarii głowicy dysku HDD. Znikanie dysku i zawieszanie systemu (gdy Windows próbuje odczytać uszkodzony sektor) potwierdzają tę diagnozę. Płyta główna jest konkurentem (uszkodzony port SATA), ale cykanie jest kluczowe.",
+    "repairSteps": [
+      {
+        "label": "Zabezpiecz najważniejsze dane klienta na zewnętrzny nośnik",
+        "progress": 30,
+        "healthBoost": 3,
+        "explanation": "Przy podejrzeniu awarii mechanicznej priorytetem jest kopia danych."
+      },
+      {
+        "label": "Sprawdź parametry SMART dysku (Reallocated Sectors, Current Pending Sector)",
+        "progress": 25,
+        "healthBoost": 2,
+        "explanation": "SMART potwierdzi fizyczną degradację talerzy."
+      },
+      {
+        "label": "Wymień uszkodzony dysk HDD na nowy dysk SSD",
+        "progress": 25,
+        "healthBoost": 5,
+        "explanation": "Nowy nośnik usuwa przyczynę spowolnień i poprawia responsywność."
+      },
+      {
+        "label": "Przywróć dane i sprawdź stabilność startu systemu",
+        "progress": 20,
+        "healthBoost": 4,
+        "explanation": "Potwierdzenie, że system działa płynnie po migracji."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Wykonaj pełne formatowanie bez kopii danych",
+      "Uderz w obudowę, żeby dysk 'ruszył'",
+      "Podkręć kartę graficzną"
+    ],
+    "points": 190
+  },
+  {
+    "id": "PD-008",
+    "title": "Porty USB przestają działać losowo",
+    "client": "Tomasz Baran",
+    "difficulty": "sredni",
+    "risk": "średnie",
+    "initialHealth": 70,
+    "mail": "Cześć,\nklawiatura i mysz czasem odłączają się na sekundę, a pendrive znika podczas kopiowania. Dzieje się to głównie na przednich portach obudowy, ale wczoraj zdarzyło się to też na tylnym porcie. Tydzień temu robiłem aktualizację BIOS i włączyłem profil XMP dla pamięci.\nTomasz",
+    "symptoms": [
+      "Losowe odłączanie urządzeń USB",
+      "Problem występuje zarówno z przodu, jak i z tyłu obudowy",
+      "Niedawna aktualizacja BIOS i włączenie XMP",
+      "Zaniki podczas transferu danych (pendrive)"
+    ],
+    "diagnosisOptions": [
+      "Płyta główna",
+      "Pamięć RAM",
+      "Zasilacz",
+      "Dysk SSD"
+    ],
+    "correctAnswer": "Pamięć RAM",
+    "diagnosisExplanation": "Problem pojawił się po aktualizacji BIOS i włączeniu XMP. Niestabilne ustawienia pamięci RAM mogą powodować losowe błędy magistrali, chwilowe freezy oraz odłączanie urządzeń USB, zwłaszcza podczas transferu danych. Płyta główna i kontroler USB są możliwym konkurentem, ale pierwszym krokiem diagnostycznym powinno być wyłączenie XMP i test stabilności RAM.",
+    "repairSteps": [
+      {
+        "label": "Wejdź do BIOS i wyłącz profil XMP/EXPO",
+        "progress": 35,
+        "healthBoost": 5,
+        "explanation": "Niestabilny profil pamięci może powodować problemy z USB i transferem danych."
+      },
+      {
+        "label": "Wykonaj test pamięci RAM, np. MemTest86",
+        "progress": 30,
+        "healthBoost": 4,
+        "explanation": "Test potwierdza, czy pamięć działa stabilnie po zmianach w BIOS."
+      },
+      {
+        "label": "Zaktualizuj sterowniki chipsetu",
+        "progress": 20,
+        "healthBoost": 3,
+        "explanation": "Sterowniki chipsetu wpływają na działanie kontrolerów USB."
+      },
+      {
+        "label": "Jeśli problem zostaje mimo stabilnej pamięci, diagnozuj kontroler USB na płycie głównej",
+        "progress": 15,
+        "healthBoost": 3,
+        "explanation": "Dopiero po wykluczeniu RAM można podejrzewać fizyczną usterkę płyty."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Wymień procesor bez testów",
+      "Usuń wszystkie pliki z pendrive",
+      "Odłącz chłodzenie procesora"
+    ],
+    "points": 185
+  },
+  {
+    "id": "PD-003",
+    "title": "System zawiesza się po kilku minutach pracy",
+    "client": "Katarzyna Wiśniewska",
+    "difficulty": "trudny",
+    "risk": "wysokie",
+    "initialHealth": 58,
+    "mail": "Dzień dobry,\nkomputer uruchamia się normalnie, ale po kilku minutach zaczyna działać coraz wolniej i potrafi całkiem się zawiesić. Problem pojawił się po czyszczeniu wnętrza obudowy, przy którym zdejmowałam chłodzenie procesora. Pasta termoprzewodząca była wymieniana rok temu, ale przy czyszczeniu mogła zostać naruszona.\nKatarzyna",
+    "symptoms": [
+      "Szybki wzrost temperatury procesora",
+      "Spadki taktowania (throttling)",
+      "Problem pojawił się po demontażu chłodzenia",
+      "Pasta wymieniana rok temu (mogła wyschnąć lub zostać źle dociśnięta)"
+    ],
+    "diagnosisOptions": [
+      "Układ chłodzenia",
+      "Zasilacz",
+      "Płyta główna",
+      "Dysk SSD"
+    ],
+    "correctAnswer": "Układ chłodzenia",
+    "diagnosisExplanation": "Bezpośredni związek czasowy z demontażem chłodzenia wskazuje na zły montaż radiatora, brak docisku lub degradację starej pasty, co prowadzi do natychmiastowego throttlingu.",
+    "repairSteps": [
+      {
+        "label": "Sprawdź, czy chłodzenie procesora jest równo zamontowane i zatrzaski są zamknięte",
+        "progress": 30,
+        "healthBoost": 5,
+        "explanation": "Nierówny docisk radiatora pogarsza odbiór ciepła."
+      },
+      {
+        "label": "Usuń starą pastę termoprzewodzącą i nałóż nową",
+        "progress": 40,
+        "healthBoost": 5,
+        "explanation": "Stara pasta traci skuteczność, zwłaszcza po zerwaniu jej warstwy."
+      },
+      {
+        "label": "Sprawdź temperatury w teście obciążeniowym (np. Prime95)",
+        "progress": 30,
+        "healthBoost": 5,
+        "explanation": "Test potwierdza, czy naprawa przywróciła stabilną pracę."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Wymień monitor",
+      "Odłącz dysk SSD na stałe",
+      "Zignoruj temperatury i zwiększ taktowanie procesora"
+    ],
+    "points": 240
+  },
+  {
+    "id": "PD-006",
+    "title": "Komputer nie widzi dysku NVMe",
+    "client": "Igor Wójcik",
+    "difficulty": "trudny",
+    "risk": "wysokie",
+    "initialHealth": 62,
+    "mail": "Dzień dobry,\nwymieniłem dysk na nowy NVMe, ale instalator systemu go nie pokazuje. W BIOS czasem go widać, a czasem nie. Płyta główna ma dwa sloty M.2. Czytałem, że mój procesor nie posiada wystarczającej liczby linii PCIe dla obu slotów jednocześnie, ale nie jestem pewien, jak to sprawdzić.\nIgor",
+    "symptoms": [
+      "Dysk NVMe jest wykrywany niestabilnie w BIOS",
+      "Instalator systemu nie widzi nośnika",
+      "Płyta ma dwa sloty M.2",
+      "Potencjalny konflikt linii PCIe procesora lub współdzielenie linii z innymi portami"
+    ],
+    "diagnosisOptions": [
+      "Dysk SSD",
+      "Płyta główna",
+      "Zasilacz",
+      "Pamięć RAM"
+    ],
+    "correctAnswer": "Płyta główna",
+    "diagnosisExplanation": "Losowe wykrywanie dysku NVMe może sugerować wadliwy SSD, ale w tym przypadku kluczowe są dwa sloty M.2 i możliwy konflikt linii PCIe. Najpierw należy sprawdzić konfigurację płyty głównej, obsługę slotów M.2, ustawienia BIOS oraz współdzielenie linii z portami SATA/PCIe.",
+    "repairSteps": [
+      {
+        "label": "Sprawdź w instrukcji płyty głównej, które sloty M.2 są aktywne przy danym procesorze",
+        "progress": 30,
+        "healthBoost": 4,
+        "explanation": "Niektóre sloty M.2 mogą być wyłączone lub ograniczone zależnie od CPU i użytych linii PCIe."
+      },
+      {
+        "label": "Przełóż dysk NVMe do drugiego slotu M.2",
+        "progress": 25,
+        "healthBoost": 4,
+        "explanation": "Pozwala sprawdzić, czy problem dotyczy konkretnego slotu lub konfiguracji płyty."
+      },
+      {
+        "label": "Zaktualizuj BIOS i przywróć domyślne ustawienia dotyczące PCIe/NVMe",
+        "progress": 25,
+        "healthBoost": 3,
+        "explanation": "Aktualizacja BIOS często poprawia kompatybilność z nośnikami NVMe."
+      },
+      {
+        "label": "Dopiero po testach sprawdź dysk w innym komputerze lub na adapterze PCIe",
+        "progress": 20,
+        "healthBoost": 4,
+        "explanation": "Jeśli dysk znika także poza tą płytą, wtedy można podejrzewać sam SSD."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Przykręć dysk zbyt mocno aż płyta się wygnie",
+      "Wymień zasilacz bez testów",
+      "Usuń chłodzenie z procesora"
+    ],
+    "points": 250
+  },
+  {
+    "id": "PD-009",
+    "title": "Po aktualizacji BIOS komputer nie startuje stabilnie",
+    "client": "Oliwia Sadowska",
+    "difficulty": "trudny",
+    "risk": "bardzo wysokie",
+    "initialHealth": 52,
+    "mail": "Dzień dobry,\npo aktualizacji BIOS komputer raz startuje, a raz zatrzymuje się na diodzie DRAM. Jeśli już wejdzie do systemu, potrafi się zawiesić. Wcześniej w BIOS był włączony profil XMP dla pamięci. Komputer był transportowany w pionie, ale obudowa była dobrze zabezpieczona.\nOliwia",
+    "symptoms": [
+      "Niestabilny start po aktualizacji BIOS",
+      "Dioda diagnostyczna DRAM",
+      "Zawieszanie po wejściu do systemu",
+      "Wcześniej był aktywny profil XMP",
+      "Transport w pionie (fałszywy trop)"
+    ],
+    "diagnosisOptions": [
+      "Pamięć RAM",
+      "Płyta główna",
+      "Zasilacz",
+      "Dysk SSD"
+    ],
+    "correctAnswer": "Pamięć RAM",
+    "diagnosisExplanation": "Dioda DRAM i zawieszanie po aktualizacji BIOS wskazują na to, że zapisane wcześniej niestabilne ustawienia XMP nie są już tolerowane przez nową wersję BIOS. Reset lub ręczna regulacja RAM jest konieczna.",
+    "repairSteps": [
+      {
+        "label": "Wyczyść ustawienia CMOS (zresetuj BIOS do domyślnych)",
+        "progress": 30,
+        "healthBoost": 3,
+        "explanation": "Reset ustawień pozwala uruchomić płytę na bezpiecznych parametrach RAM."
+      },
+      {
+        "label": "Uruchom komputer na jednej kości RAM",
+        "progress": 30,
+        "healthBoost": 3,
+        "explanation": "Minimalna konfiguracja ułatwia wykrycie problemu z konkretnym modułem."
+      },
+      {
+        "label": "Ustaw ręcznie bezpieczne taktowanie pamięci (bez XMP)",
+        "progress": 20,
+        "healthBoost": 3,
+        "explanation": "Bezpieczne taktowanie zmniejsza ryzyko niestabilności po aktualizacji."
+      },
+      {
+        "label": "Wykonaj test pamięci (MemTest86) po zapisaniu ustawień",
+        "progress": 20,
+        "healthBoost": 4,
+        "explanation": "Test RAM potwierdza stabilność po zmianach."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Przerwij zasilanie podczas zapisu BIOS",
+      "Włącz najwyższy profil XMP bez testów",
+      "Wymień dysk twardy bez sprawdzania RAM"
+    ],
+    "points": 270
+  },
+  {
+    "id": "PD-010",
+    "title": "Internet znika pod obciążeniem",
+    "client": "Karol Nowicki",
+    "difficulty": "sredni",
+    "risk": "średnie",
+    "initialHealth": 75,
+    "mail": "Cześć,\nmam dziwny problem. Internet działa normalnie, ale gdy włączę grę lub renderowanie, po kilku minutach połączenie LAN znika. Ikona sieci pokazuje brak kabla, a dioda w porcie LAN na płycie głównej przygasa. Kabel był niedawno wymieniany, a router jest sprawny. Komputer miał niedawno lekkie przepięcie.\nKarol",
+    "symptoms": [
+      "Internet znika TYLKO pod dużym obciążeniem systemu",
+      "Dioda portu LAN fizycznie przygasa/gasnie",
+      "Kabel i router są sprawne",
+      "Historia przepięcia w budynku"
+    ],
+    "diagnosisOptions": [
+      "Płyta główna",
+      "Zasilacz",
+      "Pamięć RAM",
+      "Karta graficzna"
+    ],
+    "correctAnswer": "Płyta główna",
+    "diagnosisExplanation": "Zasilacz jest silnym konkurentem (spadki napięcia pod obciążeniem), ale fizyczne przygasanie diody portu LAN wskazuje na uszkodzenie kontrolera sieciowego lub portu RJ45 na płycie głównej w wyniku przepięcia.",
+    "repairSteps": [
+      {
+        "label": "Sprawdź fizyczny stan portu LAN (czy piny nie są zaśniedziałe lub wygięte)",
+        "progress": 30,
+        "healthBoost": 3,
+        "explanation": "Przepięcie mogło uszkodzić fizyczne styki portu."
+      },
+      {
+        "label": "Zainstaluj najnowsze sterowniki kontrolera LAN ze strony producenta płyty",
+        "progress": 30,
+        "healthBoost": 4,
+        "explanation": "Wyklucza problem programowy po przepięciu."
+      },
+      {
+        "label": "Podłącz kartę sieciową PCIe lub adapter USB LAN",
+        "progress": 40,
+        "healthBoost": 5,
+        "explanation": "Ominięcie uszkodzonego zintegrowanego kontrolera na płycie głównej."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Wymień chłodzenie procesora",
+      "Sformatuj dysk systemowy",
+      "Zwiększ taktowanie RAM"
+    ],
+    "points": 180
+  },
+  {
+    "id": "PD-011",
+    "title": "Klawiatura przestaje odpowiadać z 'zacięciem' systemu",
+    "client": "Julia Lis",
+    "difficulty": "sredni",
+    "risk": "średnie",
+    "initialHealth": 88,
+    "mail": "Klawiatura nagle przestaje działać na kilka sekund, ale co ciekawe, w tym samym momencie słychać 'zacięcie' lub zapętlenie dźwięku w grze/filmie. Mysza działa, ale też czasem muli. Niedawno podkręciłam pamięć RAM (włączyłam XMP), bo chciałam więcej FPS.\nJulia",
+    "symptoms": [
+      "Klawiatura przestaje odpowiadać na kilka sekund",
+      "W tym samym momencie następuje 'zacięcie' dźwięku/systemu",
+      "Mysz również czasem muli",
+      "Niedawne włączenie profilu XMP dla RAM"
+    ],
+    "diagnosisOptions": [
+      "Pamięć RAM",
+      "Płyta główna",
+      "Dysk SSD",
+      "Zasilacz"
+    ],
+    "correctAnswer": "Pamięć RAM",
+    "diagnosisExplanation": "Użytkownik myśli, że to klawiatura, ale 'zacięcie' dźwięku i myszy wskazuje na globalny freeze systemu. W połączeniu z niedawnym włączeniem XMP, jest to klasyczny objaw niestabilności pamięci RAM, która zawiesza magistralę systemową.",
+    "repairSteps": [
+      {
+        "label": "Wejdź do BIOS i wyłącz profil XMP (ustaw pamięć na częstotliwość bazową)",
+        "progress": 40,
+        "healthBoost": 5,
+        "explanation": "Wyklucza niestabilność podkręconej pamięci jako przyczynę freeze'ów."
+      },
+      {
+        "label": "Przetestuj każdą kość RAM osobno w domyślnych ustawieniach",
+        "progress": 30,
+        "healthBoost": 4,
+        "explanation": "Znajduje ewentualnie uszkodzony moduł pamięci."
+      },
+      {
+        "label": "Jeśli problem zniknął, spróbuj włączyć XMP ponownie, ale ręcznie podnieś napięcie DRAM",
+        "progress": 30,
+        "healthBoost": 3,
+        "explanation": "Stabilizacja podkręconej pamięci, jeśli użytkownik chce zachować wydajność."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Wymień klawiaturę na nową bez testów",
+      "Sformatuj system operacyjny",
+      "Wyłącz wentylatory obudowy"
+    ],
+    "points": 170
+  },
+  {
+    "id": "PD-012",
+    "title": "Niebieski ekran przy starcie",
+    "client": "Adam Kaczmarek",
+    "difficulty": "sredni",
+    "risk": "średnie",
+    "initialHealth": 70,
+    "mail": "Po uruchomieniu komputera pojawia się blue screen (BSOD) z kodem MEMORY_MANAGEMENT. Zainstalowałem wczoraj nowy program antywirusowy, ale BSOD występuje nawet w trybie awaryjnym, zanim antywirus zdąży się załadować.\nAdam",
+    "symptoms": [
+      "BSOD z kodem MEMORY_MANAGEMENT",
+      "Restart systemu",
+      "Problem pojawił się po instalacji oprogramowania",
+      "Występuje nawet w trybie awaryjnym (wyklucza czysty software)"
+    ],
+    "diagnosisOptions": [
+      "Pamięć RAM",
+      "Dysk SSD",
+      "Płyta główna",
+      "Zasilacz"
+    ],
+    "correctAnswer": "Pamięć RAM",
+    "diagnosisExplanation": "Kod błędu i występowanie w trybie awaryjnym wskazują na fizyczne błędy pamięci RAM. Nowy antywirus mógł być tylko zbiegiem okoliczności lub obciążył niestabilną pamięć podczas skanowania.",
+    "repairSteps": [
+      {
+        "label": "Uruchom narzędzie Diagnostyka pamięci systemu Windows lub MemTest86",
+        "progress": 30,
+        "healthBoost": 3,
+        "explanation": "Sprawdzenie błędów w modułach pamięci."
+      },
+      {
+        "label": "Testuj komputer z tylko jedną kością RAM, zmieniając sloty",
+        "progress": 40,
+        "healthBoost": 4,
+        "explanation": "Znajduje uszkodzoną kość lub wadliwy slot na płycie."
+      },
+      {
+        "label": "Wymień uszkodzoną kość RAM",
+        "progress": 30,
+        "healthBoost": 5,
+        "explanation": "Rozwiązanie problemu fizycznej awarii pamięci."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Zmiana tapety pulpitu",
+      "Wymień monitor",
+      "Odłącz kartę graficzną"
+    ],
+    "points": 180
+  },
+  {
+    "id": "PD-013",
+    "title": "Spadki FPS w grach",
+    "client": "Mateusz Sikora",
+    "difficulty": "sredni",
+    "risk": "średnie",
+    "initialHealth": 75,
+    "mail": "Gry bardzo się tną mimo dobrego sprzętu. Sterowniki były aktualizowane wczoraj, ale to nie pomogło. Wentylatory karty graficznej są bardzo głośne, a temperatura GPU skacze do 88°C. Temperatura procesora jest w normie (65°C).\nMateusz",
+    "symptoms": [
+      "Niskie FPS i przycięcia",
+      "Temperatura GPU wysoka (88°C)",
+      "Wentylatory GPU bardzo głośne",
+      "Temperatura CPU w normie",
+      "Aktualizacja sterowników nie pomogła"
+    ],
+    "diagnosisOptions": [
+      "Układ chłodzenia",
+      "Zasilacz",
+      "Płyta główna",
+      "Dysk SSD"
+    ],
+    "correctAnswer": "Układ chłodzenia",
+    "diagnosisExplanation": "Wysoka temperatura GPU i głośne wentylatory wskazują na throttling termiczny karty graficznej. Zasilacz jest konkurentem, ale nie powodowałby tak wysokich temperatur, tylko nagłe wyłączenia.",
+    "repairSteps": [
+      {
+        "label": "Oczyść radiator i wentylatory karty graficznej z kurzu",
+        "progress": 30,
+        "healthBoost": 4,
+        "explanation": "Przywraca przepływ powietrza przez radiator GPU."
+      },
+      {
+        "label": "Wymień pastę termoprzewodzącą na rdzeniu GPU (jeśli karta jest starsza)",
+        "progress": 40,
+        "healthBoost": 5,
+        "explanation": "Stara pasta traci właściwości, powodując przegrzewanie rdzenia."
+      },
+      {
+        "label": "Wykonaj test wydajności (np. 3DMark) i sprawdź temperatury",
+        "progress": 30,
+        "healthBoost": 4,
+        "explanation": "Potwierdzenie, że throttling ustąpił i temperatury są stabilne."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Sformatuj system operacyjny",
+      "Odłącz pamięć RAM",
+      "Wyłącz monitor"
+    ],
+    "points": 185
+  },
+  {
+    "id": "PD-014",
+    "title": "Losowe freezy systemu",
+    "client": "Damian Wróbel",
+    "difficulty": "trudny",
+    "risk": "wysokie",
+    "initialHealth": 60,
+    "mail": "Komputer losowo się zawiesza bez powodu na kilka sekund, a potem 'odpuszcza'. Zasilacz ma 750W i złoty certyfikat, więc raczej nie on. Dysk systemowy (HDD) ma już 5 lat, ale drugi dysk (SSD) jest nowy. W dzienniku zdarzeń widzę błędy 'disk'.\nDamian",
+    "symptoms": [
+      "Krótkie, losowe zawieszanie systemu (freeze)",
+      "Zasilacz jest wydajny i markowy (wyklucza go)",
+      "Stary dysk systemowy HDD (5 lat)",
+      "Błędy 'disk' w dzienniku zdarzeń Windows"
+    ],
+    "diagnosisOptions": [
+      "Dysk HDD",
+      "Pamięć RAM",
+      "Płyta główna",
+      "Karta graficzna"
+    ],
+    "correctAnswer": "Dysk HDD",
+    "diagnosisExplanation": "Błędy 'disk' i wiek nośnika wskazują na pojawiające się bad sectory na dysku HDD. Gdy system próbuje odczytać uszkodzony sektor (np. plik stronicowania), cały system zamiera w oczekiwaniu na odpowiedź.",
+    "repairSteps": [
+      {
+        "label": "Sprawdź parametry SMART dysku HDD (szukaj błędów odczytu i realokacji)",
+        "progress": 30,
+        "healthBoost": 3,
+        "explanation": "Analiza stanu fizycznego dysku potwierdza degradację."
+      },
+      {
+        "label": "Zrób kopię zapasową najważniejszych danych z dysku HDD",
+        "progress": 25,
+        "healthBoost": 4,
+        "explanation": "Bezpieczeństwo danych przed całkowitą awarią nośnika."
+      },
+      {
+        "label": "Wymień stary dysk HDD na nowy dysk SSD i zainstaluj na nim system",
+        "progress": 45,
+        "healthBoost": 5,
+        "explanation": "Rozwiązanie problemu przez instalację nowego, niezawodnego nośnika."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Podkręć procesor",
+      "Wymień monitor",
+      "Usuń sterowniki karty graficznej"
+    ],
+    "points": 230
+  },
+  {
+    "id": "PD-015",
+    "title": "Brak obrazu po aktualizacji sterowników",
+    "client": "Marek Bąk",
+    "difficulty": "trudny",
+    "risk": "wysokie",
+    "initialHealth": 55,
+    "mail": "Po aktualizacji sterowników karty graficznej ekran jest czarny. Monitor był podłączony przez HDMI, teraz próbuję przez DisplayPort i dalej nic. Co ciekawe, system startuje (słychać dźwięk powitalny Windows), ale obrazu brak. Próbowałem też podłączyć monitor do zintegrowanej grafiki procesora – tam obraz jest.\nMarek",
+    "symptoms": [
+      "Czarny ekran na wyjściach karty graficznej po aktualizacji sterownika",
+      "System startuje w tle (słychać dźwięki)",
+      "Zmiana kabla (HDMI na DP) nie pomogła",
+      "Zintegrowana grafika procesora działa poprawnie"
+    ],
+    "diagnosisOptions": [
+      "Sterownik karty graficznej",
+      "Karta graficzna",
+      "Płyta główna",
+      "Zasilacz"
+    ],
+    "correctAnswer": "Sterownik karty graficznej",
+    "diagnosisExplanation": "Problem pojawił się bezpośrednio po aktualizacji sterownika, system normalnie startuje, a obraz przez zintegrowaną grafikę działa. To wskazuje przede wszystkim na uszkodzony lub niekompatybilny sterownik GPU, a nie na fizyczną awarię karty graficznej.",
+    "repairSteps": [
+      {
+        "label": "Uruchom komputer przez zintegrowaną grafikę lub w Trybie Awaryjnym",
+        "progress": 25,
+        "healthBoost": 3,
+        "explanation": "Pozwala wejść do systemu bez używania problematycznego sterownika GPU."
+      },
+      {
+        "label": "Użyj DDU do całkowitego usunięcia sterowników karty graficznej",
+        "progress": 40,
+        "healthBoost": 5,
+        "explanation": "Usuwa pozostałości wadliwego sterownika, które mogą powodować czarny ekran."
+      },
+      {
+        "label": "Zainstaluj starszą, stabilną wersję sterownika ze strony producenta",
+        "progress": 25,
+        "healthBoost": 4,
+        "explanation": "Powrót do sprawdzonej wersji często rozwiązuje problem po aktualizacji."
+      },
+      {
+        "label": "Jeśli problem występuje także na czystym sterowniku, przetestuj samą kartę graficzną",
+        "progress": 10,
+        "healthBoost": 2,
+        "explanation": "Dopiero wtedy można podejrzewać fizyczną awarię GPU."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Usuń BIOS (Clear CMOS)",
+      "Odłącz dysk systemowy",
+      "Zwiększ napięcie procesora"
+    ],
+    "points": 250
+  },
+  {
+    "id": "PD-016",
+    "title": "Komputer wyłącza się podczas renderowania wideo",
+    "client": "Piotr Kowalski",
+    "difficulty": "sredni",
+    "risk": "średnie",
+    "initialHealth": 68,
+    "mail": "Dzień dobry,\npracuję jako grafik i mój komputer wyłącza się nagle podczas renderowania dłuższych projektów w After Effects. Zasilacz ma 650W, ale to starszy, budżetowy model bez dokładnej informacji o certyfikacie. Karta graficzna to RTX 3070. Temperatura w pokoju wynosi 28°C, ale wentylatory w komputerze nie pracują jakoś wyjątkowo głośno przed wyłączeniem.\nPozdrawiam,\nPiotr",
+    "symptoms": [
+      "Nagłe wyłączenie pod maksymalnym obciążeniem (renderowanie)",
+      "Brak komunikatu o błędzie systemu (nagły zanik zasilania)",
+      "RTX 3070 i starszy/budżetowy zasilacz 650W o niepewnej jakości",
+      "Wentylatory nie wariują przed wyłączeniem (mniej prawdopodobne przegrzanie)"
+    ],
+    "diagnosisOptions": [
+      "Zasilacz",
+      "Płyta główna",
+      "Pamięć RAM",
+      "Dysk SSD"
+    ],
+    "correctAnswer": "Zasilacz",
+    "diagnosisExplanation": "Sama moc 650W nie oznacza automatycznie złego zasilacza dla RTX 3070. Jednak nagłe wyłączenia bez BSOD pod długim obciążeniem, w połączeniu ze starszym lub budżetowym modelem PSU o niepewnej jakości, wskazują na niestabilność zasilania albo zadziałanie zabezpieczeń OPP/OCP.",
+    "repairSteps": [
+      {
+        "label": "Sprawdź dokładny model, wiek i certyfikat zasilacza",
+        "progress": 25,
+        "healthBoost": 3,
+        "explanation": "650W dobrej jakości może wystarczyć, ale starszy lub słaby model może nie trzymać parametrów."
+      },
+      {
+        "label": "Sprawdź, czy karta graficzna jest podłączona osobnymi przewodami PCIe z zasilacza",
+        "progress": 25,
+        "healthBoost": 4,
+        "explanation": "Jeden przewód z rozgałęzieniem może powodować spadki napięcia pod obciążeniem."
+      },
+      {
+        "label": "Przeprowadź test obciążeniowy CPU+GPU z monitoringiem napięć",
+        "progress": 25,
+        "healthBoost": 4,
+        "explanation": "Pozwala wykryć niestabilność linii 12V pod realnym obciążeniem."
+      },
+      {
+        "label": "Wymień zasilacz na markowy model 650–750W lub mocniejszy, zależnie od całej konfiguracji",
+        "progress": 25,
+        "healthBoost": 5,
+        "explanation": "Nie chodzi tylko o waty, ale o jakość, sprawność i stabilność zasilacza."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Zainstaluj ponownie system operacyjny",
+      "Wymień obudowę na większą",
+      "Zwiększ taktowanie procesora"
+    ],
+    "points": 190
+  },
+  {
+    "id": "PD-017",
+    "title": "Drukarka wisi w kolejce, system czasem 'zamyśla się'",
+    "client": "Magdalena Zielińska",
+    "difficulty": "trudny",
+    "risk": "wysokie",
+    "initialHealth": 65,
+    "mail": "Cześć,\npo wczorajszej aktualizacji Windows 10 moja drukarka HP przestała drukować. Zadania drukowania wiszą w kolejce i nic się nie dzieje. Co dziwne, zauważyłam też, że komputer czasem 'zamyśla się' na 5-10 sekund przy otwieraniu dużych plików, a w menedżerze zadań dysk ma 100% użycia. Drukarka działa na innym laptopie.\nMagda",
+    "symptoms": [
+      "Zadania drukowania wstrzymane w kolejce",
+      "Problem pojawił się po aktualizacji systemu (fałszywy trop)",
+      "Komputer 'zamyśla się' na kilka sekund przy otwieraniu plików",
+      "Dysk w menedżerze zadań osiąga 100% użycia",
+      "Drukarka działa na innym sprzęcie"
+    ],
+    "diagnosisOptions": [
+      "Dysk HDD",
+      "Płyta główna",
+      "Zasilacz",
+      "Pamięć RAM"
+    ],
+    "correctAnswer": "Dysk HDD",
+    "diagnosisExplanation": "Aktualizacja Windows to czerwony śledź. Globalne 'zamyślanie się' systemu i 100% użycia dysku wskazują na awarię mechaniczną dysku HDD (bad sectory). Usługa drukowania (Print Spooler) zawiesza się, ponieważ nie może zapisać/odczytać danych z uszkodzonego dysku.",
+    "repairSteps": [
+      {
+        "label": "Sprawdź parametry SMART dysku systemowego (szukaj błędów odczytu)",
+        "progress": 30,
+        "healthBoost": 3,
+        "explanation": "Potwierdza fizyczną degradację nośnika, a nie problem z drukarką."
+      },
+      {
+        "label": "Zrób natychmiastową kopię zapasową najważniejszych danych",
+        "progress": 30,
+        "healthBoost": 4,
+        "explanation": "Bezpieczeństwo danych przed całkowitą awarią dysku."
+      },
+      {
+        "label": "Wymień uszkodzony dysk HDD na nowy dysk SSD",
+        "progress": 40,
+        "healthBoost": 5,
+        "explanation": "Rozwiązanie problemu globalnych freeze'ów i przywrócenie działania systemu."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Wymień kabel zasilający drukarki",
+      "Zresetuj ustawienia BIOS komputera",
+      "Sformatuj dysk systemowy bez kopii danych"
+    ],
+    "points": 220
+  },
+  {
+    "id": "PD-018",
+    "title": "Artefakty na ekranie podczas grania",
+    "client": "Krzysztof Nowak",
+    "difficulty": "sredni",
+    "risk": "wysokie",
+    "initialHealth": 65,
+    "mail": "Dzień dobry,\nw grach pojawiają się dziwne, kolorowe kwadraty i paski na ekranie. Czasami obraz całkowicie znika i trzeba zresetować komputer. Karta graficzna ma już 3 lata. Co ciekawe, artefakty pojawiają się częściej, gdy w pokoju jest ciepło, ale temperatura procesora jest w normie.\nKrzysztof",
+    "symptoms": [
+      "Kolorowe artefakty graficzne (kwadraty, paski)",
+      "Nagłe znikanie obrazu",
+      "Problem występuje pod obciążeniem graficznym",
+      "Karta graficzna ma 3 lata",
+      "Zależność od temperatury otoczenia"
+    ],
+    "diagnosisOptions": [
+      "Karta graficzna",
+      "Zasilacz",
+      "Pamięć RAM",
+      "Płyta główna"
+    ],
+    "correctAnswer": "Karta graficzna",
+    "diagnosisExplanation": "Artefakty graficzne to klasyczny objaw uszkodzenia pamięci VRAM lub rdzenia karty graficznej. Zasilacz jest konkurentem, ale raczej powodowałby nagłe wyłączenia, a nie specyficzne artefakty wizualne.",
+    "repairSteps": [
+      {
+        "label": "Przetestuj komputer na innym monitorze i kablu, aby wykluczyć peryferia",
+        "progress": 20,
+        "healthBoost": 2,
+        "explanation": "Ostateczne wykluczenie awarii monitora lub przewodu."
+      },
+      {
+        "label": "Sprawdź temperatury karty graficznej pod obciążeniem (Hot Spot)",
+        "progress": 30,
+        "healthBoost": 3,
+        "explanation": "Przegrzewanie się układu może nasilać objawy uszkodzenia."
+      },
+      {
+        "label": "Przeprowadź test stabilności GPU (np. FurMark) w celu wywołania artefaktów",
+        "progress": 20,
+        "healthBoost": 3,
+        "explanation": "Szybkie potwierdzenie usterki w kontrolowanych warunkach."
+      },
+      {
+        "label": "Zleć serwis karty graficznej (wymiana pasty/termopadów) lub wymień ją",
+        "progress": 30,
+        "healthBoost": 5,
+        "explanation": "Rozwiązanie problemu uszkodzonego układu graficznego."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Zmień rozdzielczość pulpitu",
+      "Wymień procesor",
+      "Zainstaluj nową tapetę"
+    ],
+    "points": 210
+  },
+  {
+    "id": "PD-019",
+    "title": "Komputer włącza się i od razu wyłącza w pętli",
+    "client": "Zofia Lewandowska",
+    "difficulty": "trudny",
+    "risk": "wysokie",
+    "initialHealth": 50,
+    "mail": "Dzień dobry,\nmój komputer włącza się na 2 sekundy, wentylatory drgną i wszystko gaśnie. Po chwili próbuje znowu i tak w kółko. W serwisie sprawdzono komputer na innym, sprawnym zasilaczu pod obciążeniem i objaw był identyczny. Nic nie było ruszane w środku obudowy.\nZofia",
+    "symptoms": [
+      "Krótkie włączenie i natychmiastowe wyłączenie (boot loop)",
+      "Brak obrazu na monitorze",
+      "Brak ingerencji w podzespoły",
+      "Objaw występuje także na innym, sprawnym zasilaczu testowanym pod obciążeniem"
+    ],
+    "diagnosisOptions": [
+      "Płyta główna",
+      "Pamięć RAM",
+      "Dysk SSD",
+      "Karta graficzna"
+    ],
+    "correctAnswer": "Płyta główna",
+    "diagnosisExplanation": "Sam pomiar 12V miernikiem bez obciążenia nie wyklucza awarii zasilacza. W tym przypadku zasilacz został jednak sprawdzony przez podmianę na sprawny egzemplarz pod obciążeniem, a objaw pozostał. To wskazuje na płytę główną: zwarcie, uszkodzoną sekcję VRM albo problem z chipsetem.",
+    "repairSteps": [
+      {
+        "label": "Uruchom komputer w minimalnej konfiguracji poza obudową",
+        "progress": 25,
+        "healthBoost": 3,
+        "explanation": "Pozwala wykluczyć zwarcie z obudową lub dodatkowe urządzenia."
+      },
+      {
+        "label": "Odłącz dyski, USB i kartę graficzną, zostawiając CPU, jedną kość RAM i zasilanie płyty",
+        "progress": 25,
+        "healthBoost": 3,
+        "explanation": "Minimalna konfiguracja pomaga znaleźć element powodujący zwarcie."
+      },
+      {
+        "label": "Sprawdź płytę główną pod kątem uszkodzeń, spuchniętych kondensatorów i śladów zwarcia",
+        "progress": 25,
+        "healthBoost": 4,
+        "explanation": "Boot loop po wykluczeniu zasilacza często wynika z uszkodzenia elektroniki płyty."
+      },
+      {
+        "label": "Wymień płytę główną, jeśli objaw występuje nadal w minimalnej konfiguracji",
+        "progress": 25,
+        "healthBoost": 5,
+        "explanation": "Po wykluczeniu PSU i podzespołów pozostaje awaria płyty głównej."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Wymień obudowę na nową",
+      "Zainstaluj nową kartę sieciową",
+      "Podkręć napięcie procesora"
+    ],
+    "points": 260
+  },
+  {
+    "id": "PD-020",
+    "title": "Powolne kopiowanie plików na dysk zewnętrzny",
+    "client": "Jakub Kamiński",
+    "difficulty": "latwy",
+    "risk": "niskie",
+    "initialHealth": 80,
+    "mail": "Cześć,\nmam problem z dyskiem zewnętrznym USB 3.0. Kiedy kopiuję na niego duże pliki, prędkość spada do kilku MB/s, a sam dysk zaczyna dziwnie 'cykać'. Port w komputerze jest niebieski (USB 3.0), a kabel był testowany na telefonie i działa idealnie.\nJakub",
+    "symptoms": [
+      "Gwałtowny spadek prędkości transferu do kilku MB/s",
+      "Słyszalne 'cykanie' z dysku zewnętrznego",
+      "Port USB 3.0 w komputerze",
+      "Kabel jest sprawny (wyklucza kabel)"
+    ],
+    "diagnosisOptions": [
+      "Dysk HDD",
+      "Płyta główna",
+      "Zasilacz",
+      "Pamięć RAM"
+    ],
+    "correctAnswer": "Dysk HDD",
+    "diagnosisExplanation": "Gwałtowny spadek prędkości połączony z mechanicznym 'cykaniem' to niepodważalny objaw awarii głowicy lub łożysk w dysku HDD znajdującym się w obudowie zewnętrznej.",
+    "repairSteps": [
+      {
+        "label": "Natychmiast zrób kopię zapasową danych z dysku zewnętrznego",
+        "progress": 40,
+        "healthBoost": 4,
+        "explanation": "Priorytet przy objawach mechanicznej awarii dysku."
+      },
+      {
+        "label": "Przeskanuj dysk pod kątem błędów systemu plików i sektorów (CHKDSK)",
+        "progress": 30,
+        "healthBoost": 3,
+        "explanation": "Wykrycie uszkodzeń logicznych lub fizycznych nośnika."
+      },
+      {
+        "label": "Wymień dysk zewnętrzny na nowy (najlepiej SSD zewnętrzny)",
+        "progress": 30,
+        "healthBoost": 5,
+        "explanation": "Rozwiązanie problemu awarii mechanicznej starego nośnika."
+      }
+    ],
+    "wrongRepairSteps": [
+      "Wymień procesor na szybszy",
+      "Zainstaluj nową kartę dźwiękową",
+      "Zresetuj ustawienia monitora"
+    ],
+    "points": 130
+  }
+]

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PC Detective</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Edukacyjna gra diagnostyczna</p>
+        <h1>PC Detective</h1>
+      </div>
+      <nav class="topbar__nav" aria-label="Nawigacja">
+        <button class="nav-button is-active" data-view="start">Start</button>
+        <button class="nav-button" data-view="game">Gra</button>
+        <button class="nav-button" data-view="knowledge">Baza wiedzy</button>
+        <button class="nav-button" data-view="ranking">Ranking</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="view view--start is-visible" id="view-start">
+        <div class="hero">
+          <div class="hero__content">
+            <p class="eyebrow">Serwis komputerowy czeka</p>
+            <h2>Diagnozuj awarie, naprawiaj komputery i pilnuj budżetu serwisu.</h2>
+            <p>
+              Czytaj maile od klientów, analizuj objawy, wybieraj diagnozę i wykonuj naprawę.
+              Każdy naprawiony komputer daje 100 zł, ale błędne decyzje obniżają wypłatę i mogą
+              jeszcze bardziej uszkodzić sprzęt.
+            </p>
+            <div class="hero__actions">
+              <button class="primary-button" id="start-game-button">Rozpocznij grę</button>
+              <button class="secondary-button" data-view-link="knowledge">Otwórz bazę wiedzy</button>
+            </div>
+          </div>
+          <div class="hero__panel" aria-label="Aktualny profil gracza">
+            <span class="panel-label">Profil technika</span>
+            <strong id="profile-rank">Początkujący Technik</strong>
+            <p>Doświadczenie: <span id="profile-exp">0</span> PD</p>
+            <p>Punkty: <span id="profile-score">0</span></p>
+            <p>Saldo: <span id="profile-money">0 zł</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="view view--game" id="view-game">
+        <aside class="sidebar">
+          <div class="sidebar__block">
+            <p class="sidebar__label">Poziom trudności</p>
+            <div class="segmented" role="group" aria-label="Poziom trudności">
+              <button class="difficulty-button is-active" data-difficulty="latwy">Łatwy</button>
+              <button class="difficulty-button" data-difficulty="sredni">Średni</button>
+              <button class="difficulty-button" data-difficulty="trudny">Trudny</button>
+            </div>
+          </div>
+
+          <div class="sidebar__block">
+            <p class="sidebar__label">Sprawa</p>
+            <select id="case-select" aria-label="Wybór zgłoszenia"></select>
+          </div>
+
+          <div class="sidebar__block">
+            <label class="sound-toggle">
+              <input type="checkbox" id="sound-toggle" checked />
+              <span>Dźwięki kliknięć</span>
+            </label>
+          </div>
+
+          <div class="stats">
+            <div>
+              <span>Punkty</span>
+              <strong id="score-value">0</strong>
+            </div>
+            <div>
+              <span>Doświadczenie</span>
+              <strong id="exp-value">0</strong>
+            </div>
+            <div>
+              <span>Ranga</span>
+              <strong id="rank-value">Początkujący Technik</strong>
+            </div>
+            <div>
+              <span>Saldo</span>
+              <strong id="money-value">0 zł</strong>
+            </div>
+            <div>
+              <span>Zlecenie</span>
+              <strong id="case-earnings-value">100 zł</strong>
+            </div>
+          </div>
+        </aside>
+
+        <section class="case-board" aria-live="polite">
+          <div class="case-header">
+            <div>
+              <p class="eyebrow" id="case-id">Zgłoszenie</p>
+              <h2 id="case-title">Wczytywanie zgłoszenia...</h2>
+            </div>
+            <span class="status-pill" id="stage-label">Diagnostyka</span>
+          </div>
+
+          <div class="customer-card">
+            <div>
+              <span>Klient</span>
+              <strong id="case-client">-</strong>
+            </div>
+            <div>
+              <span>Czas pracy</span>
+              <strong id="timer">00:00</strong>
+            </div>
+            <div>
+              <span>Ryzyko uszkodzenia</span>
+              <strong id="risk-level">-</strong>
+            </div>
+          </div>
+
+          <article class="case-section computer-state">
+            <div class="section-title-row">
+              <h3>Stan komputera</h3>
+              <strong id="health-value">100%</strong>
+            </div>
+            <div class="progress-track" aria-label="Stan komputera">
+              <div class="progress-bar health-bar" id="health-progress"></div>
+            </div>
+            <p class="progress-label" id="health-description">
+              Im więcej błędnych działań, tym większa szansa, że komputer zostanie całkiem zepsuty.
+            </p>
+          </article>
+
+          <article class="case-section mail-card">
+            <h3>Mail od klienta</h3>
+            <div id="case-mail"></div>
+          </article>
+
+          <article class="case-section">
+            <h3>Objawy z wywiadu</h3>
+            <ul class="symptom-list" id="symptoms-list"></ul>
+          </article>
+
+          <article class="case-section" id="diagnosis-section">
+            <h3>Etap 1: diagnoza</h3>
+            <p>Wybierz podzespół, który najprawdopodobniej powoduje awarię.</p>
+            <div class="choice-grid" id="diagnosis-options"></div>
+          </article>
+
+          <article class="case-section is-hidden" id="repair-section">
+            <h3>Etap 2: naprawa</h3>
+            <p>Wykonaj działania w poprawnej kolejności, aż wskaźnik naprawy osiągnie 100%.</p>
+            <div class="progress-track" aria-label="Postęp naprawy">
+              <div class="progress-bar" id="repair-progress"></div>
+            </div>
+            <p class="progress-label"><span id="progress-value">0</span>% naprawy</p>
+            <div class="choice-grid" id="repair-options"></div>
+          </article>
+
+          <article class="feedback" id="feedback">Wybierz diagnozę, aby rozpocząć pracę nad zgłoszeniem.</article>
+
+          <article class="report is-hidden" id="report">
+            <h3>Raport końcowy</h3>
+            <div id="report-content"></div>
+            <button class="secondary-button" id="save-report-button">Zapisz raport lokalnie</button>
+          </article>
+        </section>
+      </section>
+
+      <section class="view view--knowledge" id="view-knowledge">
+        <div class="section-heading">
+          <p class="eyebrow">Baza wiedzy</p>
+          <h2>Pomoc serwisowa</h2>
+        </div>
+        <div class="help-panel">
+          <h3>Jak grać</h3>
+          <p>
+            Najpierw czytaj mail od klienta i objawy. Potem wybierz diagnozę. Po poprawnej diagnozie
+            naprawiaj komputer krok po kroku. Błędne akcje zabierają pieniądze z wypłaty i obniżają
+            stan komputera. Jeśli stan spadnie do 0%, zlecenie kończy się porażką.
+          </p>
+        </div>
+        <div class="knowledge-grid" id="knowledge-grid"></div>
+      </section>
+
+      <section class="view view--ranking" id="view-ranking">
+        <div class="section-heading">
+          <p class="eyebrow">Wyniki zapisane w przeglądarce</p>
+          <h2>Ranking techników</h2>
+        </div>
+        <div class="ranking-list" id="ranking-list"></div>
+        <button class="secondary-button" id="clear-progress-button">Wyczyść postęp</button>
+      </section>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
